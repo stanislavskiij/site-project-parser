@@ -5,7 +5,7 @@ console.log(btn);
 btn.addEventListener('click', function(event){
     event.preventDefault();
     console.log(inn.value);
-    let requestURL = `http://5c506c1fd7cf.ngrok.io/api/${inn.value}`;
+    let requestURL = `http://167988bc9ab5.ngrok.io/api/${inn.value}`;
     inn.value = "";
 
     let xhr = new XMLHttpRequest();
