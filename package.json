@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "cheerio": "^1.0.0-rc.5",
     "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
