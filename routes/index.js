@@ -178,8 +178,29 @@ router.get('/parse/:inn', (req, res)=>{
   }
   
   arrAns.push(arrOfElements);
+  let htmlText = '';
+  // console.log(arrAns);
+  htmlText +='<div style="background-color: #feffd">'
+  htmlText += `<div style="display: flex; justify-content: center; background-color: #ddffbc; border-radius: 5px; margin-bottom: 30px; flex-direction: column;">
+                <h1 style="color: #52734d;">Наименование: ${arrAns[0].name}</h1>
+                <h1 style="color: #52734d;">Код: ${arrAns[0].directoryCode}</h1>
+                <h1 style="color: #52734d;">${arrAns[0].InnAndKpp}</h1>
+              </div>`
+  // console.log(arrAns[1].length);
+  let elem = arrAns[1];
+  htmlText += `<div style="width: 1000px; margin: 0 auto;">`;
+  for(let i = 1; i <arrAns[1].length; ++i){
+    
+    htmlText += `<div style="background-color: #ddffbc; border-radius: 5px; margin-bottom: 30px;">
+                  <h1 style="color: #52734d; padding: 5px;">Номер контракта: ${elem[i].contractNumber}</h1>
+                  <h1 style="color: #52734d; padding: 5px;">Поставщик: ${elem[i].provider}</h1>
+                  <h1 style="color: #52734d; padding: 5px;">Цена: ${elem[i].cost}</h1>
+                </div>`
+  }
+  htmlText += `</div>`;
+  htmlText += `</div>`;
   ans = JSON.stringify(arrAns);
-  res.send(`<h1>${ans}</h1 `)
+  res.send(`${htmlText}`)
   // console.log(arrOfElements);
 };
 
