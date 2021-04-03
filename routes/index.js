@@ -63,7 +63,7 @@ router.get('/parse/:inn', (req, res)=>{
   });
   pages = arrayPages[arrayPages.length - 2];
   let arrOfElements = [];
-  pages = 5;
+  pages = 3;
   let arrAns = [];
   let mainCustomer = {};
 
@@ -180,24 +180,44 @@ router.get('/parse/:inn', (req, res)=>{
   arrAns.push(arrOfElements);
   let htmlText = '';
   // console.log(arrAns);
-  htmlText +='<div style="background-color: #feffd">'
-  htmlText += `<div style="display: flex; justify-content: center; background-color: #ddffbc; border-radius: 5px; margin-bottom: 30px; flex-direction: column;">
-                <h1 style="color: #52734d;">Наименование: ${arrAns[0].name}</h1>
-                <h1 style="color: #52734d;">Код: ${arrAns[0].directoryCode}</h1>
-                <h1 style="color: #52734d;">${arrAns[0].InnAndKpp}</h1>
-              </div>`
-  // console.log(arrAns[1].length);
+  htmlText +=`<style>
+              body{
+                margin: 0;
+              }
+              div{
+                margin: 0;
+                padding: 10px;
+                color: #525252;
+              }
+              .place{
+                -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+                -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+                box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+              }
+              </style>`;
+
+  htmlText +=`<div style="background-color: #cef3f0; display: flex; justify-content: center; flex-direction: column; padding-bottom: 30px;">';
+                <h1 style="text-align: center; font-size: 80px;">Главная информация о компании:</h1>';
+                <div style="display: flex; width: 1000px; margin: 0 auto; background-color: #b7d9d6; border-radius: 20px; flex-direction: column;" class="place">
+                  <h1 style="color: #525252;">Наименование: ${arrAns[0].name}</h1>
+                  <h1 style="color: #525252;">Код: ${arrAns[0].directoryCode}</h1>
+                  <h1 style="color: #525252;">${arrAns[0].InnAndKpp}</h1>
+                </div>;
+                <h1 style="text-align: center; color: #525252;">Все данные были полученны со страницы: <a href="https://clearspending.ru${link}?contracts_page=1&tab=contracts" target="__blank" style="color: #525252;">https://clearspending.ru${link}?contracts_page=1&tab=contracts</a></h1>;
+              </div>`;
+  // console.log(arrAns[1].length);                   
   let elem = arrAns[1];
-  htmlText += `<div style="width: 1000px; margin: 0 auto;">`;
-  for(let i = 1; i <arrAns[1].length; ++i){
-    
-    htmlText += `<div style="background-color: #ddffbc; border-radius: 5px; margin-bottom: 30px;">
-                  <h1 style="color: #52734d; padding: 5px;">Номер контракта: ${elem[i].contractNumber}</h1>
-                  <h1 style="color: #52734d; padding: 5px;">Поставщик: ${elem[i].provider}</h1>
-                  <h1 style="color: #52734d; padding: 5px;">Цена: ${elem[i].cost}</h1>
-                </div>`
+  htmlText +=`<div style="background-color: #ade6e6; display: flex; flex-direction: column;">
+              <h1 style="text-align: center; font-size: 80px;">Информация о закупках:</h1>`;
+  for(let i = 0; i < arrAns[1].length; ++i){
+    htmlText += `<div style="width: 1000px; margin: 0 auto;">
+                    <div style="background-color: #9fd1d1; border-radius: 20px; width: 1000px;" class="place">
+                      <h1 style="color: #525252; padding: 5px;">Номер контракта: ${elem[i].contractNumber}</h1>
+                      <h1 style="color: #525252; padding: 5px;">Поставщик: ${elem[i].provider}</h1>
+                      <h1 style="color: #525252; padding: 5px;">Цена: ${elem[i].cost}</h1>
+                    </div>
+                  </div>`
   }
-  htmlText += `</div>`;
   htmlText += `</div>`;
   ans = JSON.stringify(arrAns);
   res.send(`${htmlText}`)

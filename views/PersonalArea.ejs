@@ -4,18 +4,19 @@
 
 
         <div id="logo">
-            <h3><span>Здравствуйте, </span> <span><%= user.name %></span></h3>
+            <h3><span>Здравствуйте, </span> <span>
+                    <%= user.name %>
+                </span></h3>
         </div>
 
 
-        <nav id="nav">
+        <nav id="nav" style="display: inline-block;">
             <ul>
-                <li><a href="#top" id="top-link"><span class="icon solid fa-home">Personal Area</span></a></li>
-                <li><a href="#personalArea" id="personalArea-link"><span
-                                class="icon solid fa-th">Personal Area</span></a></li>
+                <li><a href="#top" id="top-link"><span class="icon solid fa-home">ЛК</span></a></li>
+                <li><a href="#personalArea" id="personalArea-link"><span class="icon solid fa-th">ПИ</span></a></li>
+                <li><a href="#personalArea" id="personalArea-link"><span class="icon solid fa-th">Описание</span></a></li>
                 <li><a href="/users/logout" id="personalArea-link"><span class="icon solid fas fa-sign-out-alt"
-                                                                         style="margin-bottom: 10px;"><br></br>Выйти</span></a>
-                </li>
+                            style="margin-bottom: 10px;"><br></br>Выйти</span></a></li>
 
                 <!--								<li><a href="#about" id="about-link"><span class="icon solid fa-user">123</span></a></li>-->
             </ul>
@@ -34,24 +35,35 @@
             <div class="container">
 
                 <header>
-                    <h2>Личный кабинет</h2>
+                    <h2 style="font-size: 40px;">Личный кабинет</h2>
+
                 </header>
-                <br><br><br>
-                <div>
-                    <button style="margin: 0 auto; margin-bottom: 10px; height: 100px; width:600px;">Посмотреть мою
-                        текущую статистику
-                    </button>
+            </div>
+            <div style="display: flex;">
+                <div style="width: 500px;">
+                    <h2 style="text-align: left;">Имя: </h2>
+                    
                 </div>
-                <div>
-                    <button style="margin: 0 auto; margin-bottom: 10px; height: 100px; width: 600px;">Посмотреть
-                        запланированную статистику
-                    </button>
+                <h2>
+                    <%= user.name %>
+                </h2>
+            </div>
+            <div style="display: flex;">
+                <div style="width: 500px;">
+                    <h2 style="text-align: left;">E-mail: </h2>
                 </div>
-                <div>
-                    <button style="margin: 0 auto; margin-bottom: 10px; height: 100px; width: 600px;">Добавить желаемую
-                        закупку
-                    </button>
+                <h2>
+                    <%= user.email %>
+                </h2>
+            </div>
+            <div style="display: flex;">
+
+                <div style="width: 500px;">
+                    <h2 style="text-align: left;">Дата регистрации: </h2>
                 </div>
+                <h2>
+                    <%= user.date %>
+                </h2>
             </div>
 
         </div>
@@ -62,31 +74,26 @@
         <div class="container">
 
             <header>
-                <h2>Поиск по инн</h2>
+                <h2 style="font-size: 40px;">Поиск по инн</h2>
             </header>
             <div class="container">
                 <br>
                 <input>
                 <a class="button search" style="width: 500px;" href="">Найти</a>
-                <div class="container">
-                    <h1 style="margin: 0 auto;">Полученная информация:</h1>
-                    <div class="container"
-                         style="border-radius: 15px; background-color:rgb(168, 206, 206); position: relative; max-width: 600px;">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                    </div>
-                </div>
             </div>
 
+        </div>
+    </section>
+    
+    <section class="three">
+        <div class="container">
+            <header><h2 style="font-size: 40px;">Описание</h2></header>
+            <div class="container">
+                <br>
+                <br>
+                <br><br>
+                <br><br>
+            </div>
         </div>
     </section>
 </div>
