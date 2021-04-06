@@ -98,86 +98,97 @@ router.get('/parse/:inn', (req, res)=>{
 
     // console.log(mainCustomer);
     arrAns.push(mainCustomer);
-  for (let indexx = 1; indexx <= pages; ++indexx) {
-    const $ = await getHTML(
-      `https://clearspending.ru${link}?contracts_page=${indexx}&tab=contracts`
-    );
-    console.log(
-      `https://clearspending.ru${link}?contracts_page=${indexx}&tab=contracts`
-    );
-    
-    //   console.log(pagesNumber.html());
-    //   console.log(pages)
-
-    let table;
-    $(".tab-pane").each((i, e) => {
-      // console.log(i);
-      if (i == 3) {
-        $(e)
-          .find("tbody")
-          .find("tr")
-          .each((index, element) => {
-            let arrTemp1 = [];
-            let arrTemp2 = [];
-            let arrTemp3 = [];
-            // console.log(index);
-            $(element)
-              .find("td")
-              .each((indx, elemnt) => {
-                // console.log($(elemnt).html());
-
-                if (indx == 0) {
-                  $(elemnt)
-                    .find("b")
-                    .each((ind, elem) => {
-                      // console.log($(elem).text());
-                      if (ind == 0 || ind == 1) {
-                        arrTemp1.push($(elem).html());
-                      }
-                    });
-
-                  $(elemnt)
-                    .find("a")
-                    .each((ind, elem) => {
-                      // console.log($(elem).text());
-                      if (ind == 0 || ind == 1) {
-                        arrTemp2.push($(elem).html());
-                      }
-                    });
-
-                  // console.log(arrTemp1, "---------------------");
-                  // console.log(arrTemp2);
-
-                  // console.log(arrTemp1.length);
-                } else {
-                  arrTemp3.push($(elemnt).text());
-                  // console.log($(elemnt).text());
-                }
-              });
-
-            /*console.log(arrTemp3);
-            let arrTemp4 = [];
-            for(let ind = 0; ind < arrTemp1.length; ind++){
-              arrTemp4.push({section: arrTemp1[ind], info: arrTemp2[ind]}) - прошлый алгоритм, устарел
-            }
-            arrTemp4.push({section: "Цена:", info: arrTemp3[0]});*/
-
-            let obj = {};
-            obj.contractNumber = arrTemp2[0];
-            obj.provider = arrTemp2[1];
-            // console.log(typeof(arrTemp3[0]));
-            obj.cost = arrTemp3[0].split("\n").join("").split(",").join("");
-            arrOfElements.push(obj);
-
-            // console.log($(element).html(), '--------------------------');
-            // let obj = {number: $(eleme)};
-            // arrOfElememts.push()
-          });
-      }
-    });
-  }
+    for (let indexx = 1; indexx <= pages; ++indexx) {
+      console.log(indexx);
+      const $ = await getHTML(
+        `https://clearspending.ru${link}?contracts_page=${indexx}&tab=contracts`
+      );
+      console.log(
+        `https://clearspending.ru${link}?contracts_page=${indexx}&tab=contracts`
+      );
   
+      //   console.log(pagesNumber.html());
+      //   console.log(pages)
+      let arrTemp1 = [];
+      let arrTemp2 = [];
+      let arrTemp3 = [];
+      let table;
+      // console.log($(".tb-dwnld-container").html())
+      $(".tb-dwnld-container").each((i, tbcontainer) => {
+        if(i == 1){
+          
+          $(tbcontainer)
+            .find("tbody")
+            .find("tr")
+            .each((index, element) => {
+              // console.log($(element).html())
+              // console.log(index);
+              $(element)
+                .find("td")
+                .each((indx, elemnt) => {
+  
+                  // console.log($(elemnt).html());
+                  // console.log(indx);
+                  if (indx == 0) {
+                    $(elemnt)
+                      .find("b")
+                      .each((ind, elem) => {
+                        // console.log($(elem).text());
+                        if (ind == 0 || ind == 1) {
+                          arrTemp1.push($(elem).html());
+                        }
+                      });
+  
+                    $(elemnt)
+                      .find("a")
+                      .each((ind, elem) => {
+                        // console.log($(elem).text());
+                        if (ind == 0 || ind == 1) {
+                          arrTemp2.push($(elem).html());
+                        }
+                      });
+  
+                    // console.log(arrTemp1, "---------------------");
+                    // console.log(arrTemp2);
+  
+                    // console.log(arrTemp1.length);
+                  } 
+                  if(indx == 1) {
+                    arrTemp3.push($(elemnt).text());
+                    // console.log($(elemnt).text());
+                  }
+                });
+  
+              /*console.log(arrTemp3);
+              let arrTemp4 = [];
+              for(let ind = 0; ind < arrTemp1.length; ind++){
+                arrTemp4.push({section: arrTemp1[ind], info: arrTemp2[ind]}) - прошлый алгоритм, устарел
+              }
+              arrTemp4.push({section: "Цена:", info: arrTemp3[0]});*/
+  
+              let obj = {};
+              obj.contractNumber = arrTemp2[0];
+              obj.provider = arrTemp2[1];
+              // console.log(typeof(arrTemp3[0]));
+              obj.cost = arrTemp3[0].split("\n").join("").split(",").join("");
+              // console.log(obj);
+              arrOfElements.push(obj);
+              // console.log(arrTemp2);
+              arrTemp1 = [];
+              arrTemp2 = [];
+              arrTemp3 = [];
+              // console.log($(element).html(), '--------------------------');
+              // let obj = {number: $(eleme)};
+              // arrOfElememts.push()
+            });
+        }
+        // console.log(i);
+      });
+    }
+
+
   arrAns.push(arrOfElements);
+  console.log(arrAns);
   let htmlText = '';
   // console.log(arrAns);
   htmlText +=`<style>

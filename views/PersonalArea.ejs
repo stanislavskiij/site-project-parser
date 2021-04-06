@@ -14,7 +14,8 @@
             <ul>
                 <li><a href="#top" id="top-link"><span class="icon solid fa-home">ЛК</span></a></li>
                 <li><a href="#personalArea" id="personalArea-link"><span class="icon solid fa-th">ПИ</span></a></li>
-                <li><a href="#personalArea" id="personalArea-link"><span class="icon solid fa-th">Описание</span></a></li>
+                <li><a href="#personalArea" id="personalArea-link"><span class="icon solid fa-th">Описание</span></a>
+                </li>
                 <li><a href="/users/logout" id="personalArea-link"><span class="icon solid fas fa-sign-out-alt"
                             style="margin-bottom: 10px;"><br></br>Выйти</span></a></li>
 
@@ -36,34 +37,41 @@
 
                 <header>
                     <h2 style="font-size: 40px;">Личный кабинет</h2>
-
                 </header>
             </div>
             <div style="display: flex;">
                 <div style="width: 500px;">
                     <h2 style="text-align: left;">Имя: </h2>
-                    
+
                 </div>
-                <h2>
-                    <%= user.name %>
-                </h2>
+                <div style="width: 800px; text-align: left;">
+                    <h2 style="font-size: 26px;">
+                        <%= user.name %>
+                    </h2>
+                </div>
+                
             </div>
             <div style="display: flex;">
                 <div style="width: 500px;">
                     <h2 style="text-align: left;">E-mail: </h2>
                 </div>
-                <h2>
-                    <%= user.email %>
-                </h2>
+                <div style="width: 800px; text-align: left;">
+                    <h2 style="font-size: 26px;">
+                        <%= user.email %>
+                    </h2>
+                </div>
             </div>
             <div style="display: flex;">
 
                 <div style="width: 500px;">
                     <h2 style="text-align: left;">Дата регистрации: </h2>
                 </div>
-                <h2>
-                    <%= user.date %>
-                </h2>
+                <div style="width: 500px; text-align: left;">
+                    <h2 style="font-size: 26px;">
+                        <%= user.date %>
+                    </h2>
+                </div>
+
             </div>
 
         </div>
@@ -84,15 +92,15 @@
 
         </div>
     </section>
-    
+
     <section class="three">
         <div class="container">
-            <header><h2 style="font-size: 40px;">Описание</h2></header>
+            <header>
+                <h2 style="font-size: 40px;">Описание</h2>
+            </header>
             <div class="container">
-                <br>
-                <br>
-                <br><br>
-                <br><br>
+                <p>При нажатии на кнопку "Поиск по инн", произойдёт переадресация на другую страницу сайта, где будут
+                    сформированны блоки с информации, связанной с этим инн</p>
             </div>
         </div>
     </section>
