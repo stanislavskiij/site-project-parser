@@ -210,9 +210,9 @@ router.get('/parse/:inn', (req, res)=>{
   htmlText +=`<div style="background-color: #cef3f0; display: flex; justify-content: center; flex-direction: column; padding-bottom: 30px;">';
                 <h1 style="text-align: center; font-size: 80px;">Главная информация о компании:</h1>';
                 <div style="display: flex; width: 1000px; margin: 0 auto; background-color: #b7d9d6; border-radius: 20px; flex-direction: column;" class="place">
-                  <h1 style="color: #525252;">Наименование: ${arrAns[0].name}</h1>
-                  <h1 style="color: #525252;">Код: ${arrAns[0].directoryCode}</h1>
-                  <h1 style="color: #525252;">${arrAns[0].InnAndKpp}</h1>
+                  <h1 style="color: #525252; font-size: 26px;">Наименование: ${arrAns[0].name}</h1>
+                  <h1 style="color: #525252; font-size: 26px;">Код: ${arrAns[0].directoryCode}</h1>
+                  <h1 style="color: #525252; font-size: 26px;">${arrAns[0].InnAndKpp}</h1>
                 </div>;
                 <h1 style="text-align: center; color: #525252;">Все данные были полученны со страницы: <a href="https://clearspending.ru${link}?contracts_page=1&tab=contracts" target="__blank" style="color: #525252;">https://clearspending.ru${link}?contracts_page=1&tab=contracts</a></h1>;
               </div>`;
